@@ -17,7 +17,7 @@ pipeline {
         stage('Run Tests') {
             steps {
                 sh '''
-                bash -c "source venv/bin/activate && pytest --junitxml=test-results.xml"
+                bash -c "source venv/bin/activate && export PYTHONPATH=$PYTHONPATH:$(pwd)/src && pytest --junitxml=test-results.xml"
                 '''
             }
         }
